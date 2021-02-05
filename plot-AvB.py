@@ -9,7 +9,6 @@ import seaborn as sns
 def admt(cst, flow):
     return (cst * flow)
 
-
 lab = pd.read_csv('labdata.csv')  
 samplepoints = pd.read_csv('sample-points.csv')
 
