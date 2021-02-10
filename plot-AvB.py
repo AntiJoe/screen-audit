@@ -84,7 +84,7 @@ plt.ylabel('Reject Rate (mass)', fontdict=font)
 
 
 # Set position of bar on X axis 
-br1 = np.arange(len(calcs['Trial'])) 
+br1 = np.arange(len(calcs['Trial'])) + 1 - barWidth
 br2 = [x + barWidth for x in br1] 
 br3 = [x + barWidth for x in br2] 
 
@@ -95,6 +95,9 @@ print(br3)
 plt.bar(br1, calcs.Frrm, width=barWidth, bottom=0, color='b', label='FS')
 plt.bar(br2, calcs.Prrm, width=barWidth, bottom=0, color='g', label='P')
 plt.bar(br3, calcs.Srrm, width=barWidth, bottom=0, color='r', label='S')
+
+# plt.xticks(x, ('1.3 %', '1.55%', '1.0%'))
+
 plt.legend()
 plt.ylim(20, 80)
 plt.show()
