@@ -32,30 +32,70 @@ print(df)
 print(df.describe())
 
 print(calcs)
-
-
+calcs.to_csv('calcs.csv')
 
 # Create plot figure and axis
 fig = plt.figure('Screen Audit Feb 3')
-ax = fig.add_subplot(1,1,1)
-
-fig.suptitle('Screen Audit Feb 3, 2021')
 font = {'family': 'serif',
         'color':  'darkred',
         'weight': 'normal',
         'size': 16,
         }
-
-# plt.title('Quality Window\n' + start_time + ' --  ' + end_time, fontdict=font, loc='left')
-# plt.legend(['MC6', 'MC1', 'Rejects', 'L1', 'L2', 'L3'])
-
 font['size'] = 12
-plt.xlabel('Trial', fontdict=font)
+
+fig.suptitle('FS Screen \nMass Rejects Rate vs Feed Consistency')
+plt.xlabel('Feed Consistency', fontdict=font)
+plt.ylabel('Reject Rate (mass)', fontdict=font)
+labels = calcs['Feed.cst']
+plt.bar(labels, calcs.Frrm, width=0.1, bottom=0)
+# plt.ylim(30, 45)
+# plt.show()
+# plt.close()
+fig = plt.figure('Screen Audit Feb 3')
+
+
+fig.suptitle('Primary Screen \nMass Rejects Rate vs Feed Consistency')
+plt.xlabel('Feed Consistency', fontdict=font)
+plt.ylabel('Reject Rate (mass)', fontdict=font)
+labels = calcs['Feed.cst']
+plt.bar(labels, calcs.Prrm, width=0.1, bottom=0)
+# plt.ylim(30, 50)
+# plt.show()
+# plt.close()
+fig = plt.figure('Screen Audit Feb 3')
+
+
+fig.suptitle('Secondary Screen \nMass Rejects Rate vs Feed Consistency')
+plt.xlabel('Feed Consistency', fontdict=font)
+plt.ylabel('Reject Rate (mass)', fontdict=font)
+labels = calcs['Feed.cst']
+plt.bar(labels, calcs.Srrm, width=0.1, bottom=0)
+# plt.ylim(50, 80)
+# plt.show()
+plt.close()
+fig = plt.figure('Screen Audit Feb 3')
+
+fig.suptitle('Screen Mass Rejects Rate vs Feed Consistency')
+# set width of bar 
+barWidth = 0.25
+
+plt.xlabel('Feed Consistency', fontdict=font)
 plt.ylabel('Reject Rate (mass)', fontdict=font)
 
-plt.style.use('seaborn-dark-palette')
-# plt.scatter(x=calcs['Feed.cst'], y=calcs.Frrm, s=9, c='black', marker='o')
-ax.bar(calcs['Trial'], calcs.Frrm, width=0.25, bottom=0)
-# plt.ylim(0, 100)
 
+# Set position of bar on X axis 
+br1 = np.arange(len(calcs['Trial'])) 
+br2 = [x + barWidth for x in br1] 
+br3 = [x + barWidth for x in br2] 
+
+print(br1)
+print(br2)
+print(br3)
+
+plt.bar(br1, calcs.Frrm, width=barWidth, bottom=0, color='b', label='FS')
+plt.bar(br2, calcs.Prrm, width=barWidth, bottom=0, color='g', label='P')
+plt.bar(br3, calcs.Srrm, width=barWidth, bottom=0, color='r', label='S')
+plt.legend()
+plt.ylim(20, 80)
 plt.show()
+
