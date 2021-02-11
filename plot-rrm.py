@@ -46,7 +46,7 @@ ypad = 5
 plt.xlim(min(dff.feed) - xpad, max(dff.feed) + xpad)
 plt.ylim(min(dff.RRm) - ypad, max(dff.RRm) + ypad)
 # plt.yticks(ticks=np.arr)
-# outfile = '{}-con-rrm.png'.format(screenTag)
-# plt.savefig(outfile, dpi=600)
+outfile = 'FPS-rrm.png'
+plt.savefig(outfile, dpi=600)
 plt.show()
 plt.close()
