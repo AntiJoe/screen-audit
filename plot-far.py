@@ -7,13 +7,13 @@ from datetime import datetime, timedelta
 import seaborn as sns
 
 df = pd.read_excel('out.xlsx', sheet_name='FAR-csf')
+print(df)
 
-df = df[df.Screen == 'FS']
+screenTag = 'FS'
 
+df = df[df.Screen == screenTag]
 print(df)
 print(df.describe())
-
-trail1 = df[df.Trail == 1]
 
 # Create plot figure and axis
 fig = plt.figure('Screen Audit Feb 3')
@@ -23,12 +23,22 @@ font = {'family': 'serif',
         'size': 16,
         }
 font['size'] = 12
-fig.suptitle('FS Screen \nMass Rejects Rate vs Feed Consistency')
+barWidth = 0.15
+fig.suptitle('{} Screen \nFreeness Streams vs Feed Consistency'.format(screenTag))
+c = ['b', 'g', 'r']
+offset = [-barWidth, 0, barWidth]
+trial= [3,3]
+trialLegend = ['Trial 1 - 1.3%', 'Trial 2 - 1.55%', 'Trial 3 - 1.0%']
 
-plt.bar(br1, calcs.Frrm, width=barWidth, bottom=0, color='b', label='FS')
-plt.bar(br2, calcs.Prrm, width=barWidth, bottom=0, color='g', label='P')
-plt.bar(br3, calcs.Srrm, width=barWidth, bottom=0, color='r', label='S')
+for i in [1,2,3]:
+  trial = df[df.Trial == i]
+  plt.bar(1 + offset[i -1], trial.feed, width=barWidth, bottom=0, color=c[i-1], label=trialLegend[i-1])
+  plt.bar(2 + offset[i -1], trial.accepts, width=barWidth, bottom=0, color=c[i-1])
+  plt.bar(3 + offset[i -1], trial.rejects, width=barWidth, bottom=0, color=c[i-1])
 
 plt.legend()
-# plt.ylim(20, 80)
+plt.grid(True, ls=':')
+plt.xticks([1,2,3], labels=['Feed', 'Accepts', 'Rejects'])
+plt.ylabel('Freeness (ml)', fontdict=font)
+
 plt.show()
