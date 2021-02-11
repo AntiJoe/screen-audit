@@ -1,8 +1,8 @@
-sample,Description
-A,Screen Feed
-B,FS 3900 Rejects
-C,P 1890 Feed
-D,P 1890 Accepts
-E,S 1910 Feed
-F,S 1910 Accepts
-G,S 1910 Rejects
+sample,Description,piflow
+A,Screen Feed,fs1feed
+B,FS 3900 Rejects,fs1rejects
+C,P 1890 Feed,p11feed
+D,P 1890 Accepts,p11accepts
+E,S 1910 Feed,s1feed
+F,S 1910 Accepts,s1accepts
+G,S 1910 Rejects,s1rejects
