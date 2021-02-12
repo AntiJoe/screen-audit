@@ -22,18 +22,21 @@ font = {'family': 'serif',
 font['size'] = 12
 barWidth = 0.15
 fig.suptitle('Reject Rates by Mass vs Feed Consistency\nIndividual and Combined', fontdict=font)
-c = ['b', 'g', 'r']
+c = ['blue', 'green', 'red', 'black']
+m = ['o', '^', 'v', 'D']
 offset = [-barWidth, 0, barWidth]
 trial= [3,3]
 trialLegend = ['Trial 1 - 1.3%', 'Trial 2 - 1.55%', 'Trial 3 - 1.0%']
-
+idx = 0
 for screenTag in ['FS', 'P', 'S', 'Combined']:
     df = dff[dff.Screen == screenTag]
     print(df)
     print(df.describe())
     
     # plt.scatter(x=df.feed, y=df.RRm)
-    ax = sns.regplot(x=df.feed, y=df.RRm, ci=None, label=screenTag)
+    ax = sns.regplot(x=df.feed, y=df.RRm, ci=None, label=screenTag, color=c[idx], marker=m[idx])
+    print(idx)
+    idx = idx + 1
         
 # ax.legend.texts[0].set_text([1,2,3])
 plt.legend()
