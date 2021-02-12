@@ -21,7 +21,7 @@ font = {'family': 'serif',
         }
 font['size'] = 12
 barWidth = 0.15
-fig.suptitle('Reject Rates by Mass vs Feed Consistency\nIndividual and Combined', fontdict=font)
+fig.suptitle('Reject Rates by Mass vs Feed Consistency\nIndividual Screens and Combined', fontdict=font)
 c = ['blue', 'green', 'red', 'black']
 m = ['o', '^', 'v', 'D']
 w = [2,2,2,2]
