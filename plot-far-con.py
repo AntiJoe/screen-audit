@@ -25,7 +25,7 @@ for screenTag in ['FS', 'P', 'S']:
             }
     font['size'] = 12
     barWidth = 0.15
-    fig.suptitle('{} Screen \nConsistencies vs Feed Consistency'.format(screenTag))
+    fig.suptitle('{} Screen \nConsistencies vs Feed Consistency'.format(screenTag), fontdict=font)
     c = ['b', 'g', 'r']
     offset = [-barWidth, 0, barWidth]
     trial= [3,3]
