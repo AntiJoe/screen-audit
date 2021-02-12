@@ -24,6 +24,8 @@ barWidth = 0.15
 fig.suptitle('Reject Rates by Mass vs Feed Consistency\nIndividual and Combined', fontdict=font)
 c = ['blue', 'green', 'red', 'black']
 m = ['o', '^', 'v', 'D']
+w = [2,2,2,2]
+ls = ['--', '--', '--', '-']
 offset = [-barWidth, 0, barWidth]
 trial= [3,3]
 trialLegend = ['Trial 1 - 1.3%', 'Trial 2 - 1.55%', 'Trial 3 - 1.0%']
@@ -34,7 +36,8 @@ for screenTag in ['FS', 'P', 'S', 'Combined']:
     print(df.describe())
     
     # plt.scatter(x=df.feed, y=df.RRm)
-    ax = sns.regplot(x=df.feed, y=df.RRm, ci=None, label=screenTag, color=c[idx], marker=m[idx])
+    ax = sns.regplot(x=df.feed, y=df.RRm, ci=None, label=screenTag, color=c[idx], 
+    marker=m[idx], line_kws={"lw":w[idx], "ls": ls[idx]})
     print(idx)
     idx = idx + 1
         
