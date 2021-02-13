@@ -11,7 +11,7 @@ print(dff)
 
 
 
-for screenTag in ['FS', 'P', 'S']:
+for screenTag in ['FS', 'P', 'S', 'Combined']:
     df = dff[dff.Screen == screenTag]
     print(df)
     print(df.describe())
@@ -28,7 +28,7 @@ for screenTag in ['FS', 'P', 'S']:
     fig.suptitle('{} Screen \nConsistencies vs Feed Consistency'.format(screenTag), fontdict=font)
     c = ['b', 'g', 'r']
     baralpha = 0.65
-    offset = [-barWidth, 0, barWidth]
+    offset = [0, barWidth, -barWidth]
     trial= [3,3]
     trialLegend = ['Trial 1 - 1.3%', 'Trial 2 - 1.55%', 'Trial 3 - 1.0%']
 
