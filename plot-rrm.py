@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 import seaborn as sns
 
 dff = pd.read_excel('out.xlsx', sheet_name='FAR-con')
-print(dff)
+print(dff) # print out datafile
 
 dff = dff[dff.Trial != 'SD']
 
