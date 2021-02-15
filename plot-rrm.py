@@ -5,6 +5,7 @@ import mysql.connector
 import sys
 from datetime import datetime, timedelta
 import seaborn as sns
+from scipy import stats
 
 dff = pd.read_excel('out.xlsx', sheet_name='FAR-con')
 print(dff) # print out datafile
@@ -40,7 +41,10 @@ for screenTag in ['FS', 'P', 'S', 'Combined']:
     marker=m[idx], line_kws={"lw":w[idx], "ls": ls[idx]})
     print(idx)
     idx = idx + 1
-        
+
+slope, intercept, r_value, p_value, std_err = stats.linregress(df.feed, df.RRm) 
+print('slope: {}, intercept: {}, r_squ: {}, p_value: {}, std_err: {}'.format(slope, intercept, r_value**2, p_value, std_err))
+
 # ax.legend.texts[0].set_text([1,2,3])
 plt.legend()
 plt.grid(True, ls=':')

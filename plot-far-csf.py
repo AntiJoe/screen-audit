@@ -28,7 +28,7 @@ for screenTag in ['FS', 'P', 'S', 'FPS']:
     fig.suptitle('{} Screen \nFreeness Streams vs Feed Consistency'.format(screenTag), fontdict=font)
     c = ['b', 'g', 'r']
     baralpha = 0.8
-    offset = [-barWidth, 0, barWidth]
+    offset = [0, barWidth, -barWidth]
     trial= [3,3]
     trialLegend = ['Trial 1 - 1.3%', 'Trial 2 - 1.55%', 'Trial 3 - 1.0%']
 
