@@ -11,7 +11,7 @@ print(dff)
 
 
 
-for screenTag in ['FS', 'P', 'S', 'FPS']:
+for screenTag in ['FS', 'P', 'S', 'Combined']:
     df = dff[dff.Screen == screenTag]
     print(df)
     print(df.describe())
