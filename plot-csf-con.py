@@ -35,15 +35,25 @@ for screenTag in ['FS', 'P', 'S', 'Combined']:
     df = dff[dff.Screen == screenTag]
     print(df)
     print(df.describe())
-    
-    # plt.scatter(x=df.feed, y=df.RRm)
     ax = sns.regplot(x=df.feed, y=df.CSFdrop, ci=None, label=screenTag, color=c[idx], 
-    marker=m[idx], line_kws={"lw":w[idx], "ls": ls[idx]})
+    marker=m[idx], scatter_kws={'s':20, 'alpha':0.45}, line_kws={"lw":w[idx], "ls": ls[idx]})
     print(idx)
     idx = idx + 1
 
 slope, intercept, r_value, p_value, std_err = stats.linregress(df.feed, df.RRm) 
 print('slope: {}, intercept: {}, r_squ: {}, p_value: {}, std_err: {}'.format(slope, intercept, r_value**2, p_value, std_err))
+
+idx = 0
+for screenTag in ['FS', 'P', 'S', 'Combined']:
+    df = dff[dff.Screen2 == screenTag]
+    print(df)
+    print(df.describe())
+    ax = sns.regplot(x=df.feed, y=df.CSFdrop, ci=None, color=c[idx], 
+    marker=m[idx], scatter_kws={'s':40, 'alpha':1}, line_kws={"lw":0, "ls": ls[0]})
+    print(idx)
+    idx = idx + 1
+
+
 
 # ax.legend.texts[0].set_text([1,2,3])
 plt.legend()

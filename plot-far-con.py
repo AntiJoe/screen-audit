@@ -6,7 +6,7 @@ import sys
 from datetime import datetime, timedelta
 import seaborn as sns
 
-dff = pd.read_excel('out.xlsx', sheet_name='FAR-con')
+dff = pd.read_excel('out.xlsx', sheet_name='FAR-con2')
 print(dff)
 
 
@@ -26,13 +26,14 @@ for screenTag in ['FS', 'P', 'S', 'Combined']:
     font['size'] = 12
     barWidth = 0.15
     fig.suptitle('{} Screen \nConsistencies vs Feed Consistency'.format(screenTag), fontdict=font)
-    c = ['b', 'g', 'r']
+    c = ['b', 'g', 'r', 'cyan', 'orange']
     baralpha = 0.65
-    offset = [0, barWidth, -barWidth]
+    # offset = [0, barWidth, -barWidth, 2*barWidth, 3*barWidth]
+    offset = [barWidth, 2*barWidth, -2*barWidth, 0, -1*barWidth]
     trial= [3,3]
-    trialLegend = ['Trial 1 - 1.3%', 'Trial 2 - 1.55%', 'Trial 3 - 1.0%']
+    trialLegend = ['Trial 1 - 1.3%', 'Trial 2 - 1.55%', 'Trial 3 - 1.0%', 'Trial 4 - 1.2%', 'Trial 5 - 1.1%']
 
-    for i in [1,2,3]:
+    for i in [1,2,3,4,5]:
         trial = df[df.Trial == i]
         plt.bar(1 + offset[i -1], trial.feed, width=barWidth, bottom=0, alpha=baralpha, color=c[i-1], label=trialLegend[i-1])
         plt.bar(2 + offset[i -1], trial.accepts, width=barWidth, bottom=0, alpha=baralpha, color=c[i-1])
